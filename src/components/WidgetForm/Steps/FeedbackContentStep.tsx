@@ -8,11 +8,14 @@ import { FormEvent, useState } from 'react';
 interface FeedbackContentStepProps{
   feedbackType: FeedbackType;
   onFeedbackRestartRequested: () => void;
+  onFeedbackSent: () => void;
 }
 
 export function FeedbackContentStep({ 
   feedbackType, 
-  onFeedbackRestartRequested
+  onFeedbackRestartRequested,
+  onFeedbackSent
+
 }: FeedbackContentStepProps) {
 
   const feedbackTypeInfo = feedbackTypes[feedbackType]
@@ -21,6 +24,7 @@ export function FeedbackContentStep({
 
   function handleSubmitFeedback(e: FormEvent){
     e.preventDefault()
+    onFeedbackSent()
   }
 
   return (
